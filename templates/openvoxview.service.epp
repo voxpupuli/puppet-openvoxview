@@ -1,0 +1,21 @@
+<%- | String[1] $user,
+      String[1] $group,
+      Stdlib::Absolutepath $install_path,
+      Stdlib::Absolutepath $config_path
+| -%>
+# THIS FILE IS MANAGED BY PUPPET
+[Unit]
+Description=Openvox View
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+User=<%= $user %>
+Group=<%= $group %>
+ExecStart=<%= $install_path %> -config <%= $config_path %>
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
