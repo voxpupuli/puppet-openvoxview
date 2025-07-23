@@ -9,8 +9,8 @@
 #
 # @param manage_config_dir
 #   Should this module manage the config dir
-# 
-# @param config_dir 
+#
+# @param config_dir
 #   Path to the config dir
 #
 # @param config_file
@@ -61,6 +61,12 @@
 # @param puppetdb_tls_ignore
 #   Should a insecure connection to PuppetDB be allowed
 #
+# @param predefined_pql_queries
+#   Array of predefined queries
+#
+# @param predefined_view
+#   Array of predefined views
+#
 # @param puppetdb_tls_ca_path
 #   Path to the CA file
 #
@@ -69,14 +75,7 @@
 #
 # @param puppetdb_tls_cert_path
 #   Path to the PuppetDB cert file
-#
-# @param predefined_pql_queries
-#   Array of predefined queries
-#
-# @param predefined_view
-#   Array of predefined views
-#
-class openvoxview(
+class openvoxview (
   String $version = '0.1.12',
   Stdlib::Absolutepath $install_path = '/usr/local/bin',
   Boolean $manage_config_dir = true,
@@ -97,22 +96,21 @@ class openvoxview(
   Integer $puppetdb_port = 8080,
   Boolean $puppetdb_tls = false,
   Boolean $puppetdb_tls_ignore = true,
-  Optional[String] $puppetdb_tls_ca_path,
-  Optional[String] $puppetdb_tls_key_path,
-  Optional[String] $puppetdb_tls_cert_path,
   Array[Hash] $predefined_pql_queries = [],
   Array[Hash] $predefined_views = [],
-  
+  String $puppetdb_tls_ca_path = undef,
+  String $puppetdb_tls_key_path = undef,
+  String $puppetdb_tls_cert_path = undef,
 ) {
   if ($manage_group) {
-    group{ $openvoxview_group:
+    group { $openvoxview_group:
       ensure => present,
     }
   }
-  
+
   if ($manage_user) {
     user { $openvoxview_user:
-      gid    => $group,
+      gid    => $openvoxview_group,
       system => true,
     }
   }
@@ -120,7 +118,7 @@ class openvoxview(
   contain openvoxview::install
   contain openvoxview::config
   contain openvoxview::service
-  
+
   Class['openvoxview::install']
   -> Class['openvoxview::config']
   ~> Class['openvoxview::service']

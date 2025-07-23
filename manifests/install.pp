@@ -9,8 +9,8 @@ class openvoxview::install {
     default => undef,
   }
 
-  $download_source = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64"
-  
+  $download_source = "https://github.com/voxpupuli/openvoxview/releases/download/v${openvoxview::version}/openvoxview_${openvoxview::version}_linux_amd64"
+
   file { $openvoxview::install_path:
     ensure => file,
     source => $download_source,
