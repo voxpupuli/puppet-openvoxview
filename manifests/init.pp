@@ -76,7 +76,7 @@
 # @param puppetdb_tls_cert_path
 #   Path to the PuppetDB cert file
 class openvoxview (
-  String $version = '0.1.12',
+  String $version = '0.1.13',
   Stdlib::Absolutepath $install_path = '/usr/local/bin',
   Boolean $manage_config_dir = true,
   Stdlib::Absolutepath $config_dir = '/etc/openvox',
