@@ -13,10 +13,9 @@ class openvoxview::service {
     systemd::unit_file { "${openvoxview::service_name}.service":
       content => epp('openvoxview/openvoxview.service.epp',
         {
-          install_path => $openvoxview::install_path,
-          config_path  => "${openvoxview::config_dir}/${openvoxview::config_file}",
-          user         => $openvoxview::openvoxview_user,
-          group        => $openvoxview::openvoxview_group,
+          config_path => "${openvoxview::config_dir}/${openvoxview::config_file}",
+          user        => $openvoxview::openvoxview_user,
+          group       => $openvoxview::openvoxview_group,
         }
       ),
       notify  => $notify_service_maybe,

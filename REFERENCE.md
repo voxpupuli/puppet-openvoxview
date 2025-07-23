@@ -27,7 +27,6 @@ Main class, includes all other classes
 The following parameters are available in the `openvoxview` class:
 
 * [`version`](#-openvoxview--version)
-* [`install_path`](#-openvoxview--install_path)
 * [`manage_config_dir`](#-openvoxview--manage_config_dir)
 * [`config_dir`](#-openvoxview--config_dir)
 * [`config_file`](#-openvoxview--config_file)
@@ -47,11 +46,10 @@ The following parameters are available in the `openvoxview` class:
 * [`puppetdb_tls`](#-openvoxview--puppetdb_tls)
 * [`puppetdb_tls_ignore`](#-openvoxview--puppetdb_tls_ignore)
 * [`predefined_pql_queries`](#-openvoxview--predefined_pql_queries)
-* [`predefined_view`](#-openvoxview--predefined_view)
+* [`predefined_views`](#-openvoxview--predefined_views)
 * [`puppetdb_tls_ca_path`](#-openvoxview--puppetdb_tls_ca_path)
 * [`puppetdb_tls_key_path`](#-openvoxview--puppetdb_tls_key_path)
 * [`puppetdb_tls_cert_path`](#-openvoxview--puppetdb_tls_cert_path)
-* [`predefined_views`](#-openvoxview--predefined_views)
 
 ##### <a name="-openvoxview--version"></a>`version`
 
@@ -59,15 +57,7 @@ Data type: `String`
 
 Which version should be installed
 
-Default value: `'0.1.13'`
-
-##### <a name="-openvoxview--install_path"></a>`install_path`
-
-Data type: `Stdlib::Absolutepath`
-
-Installation path of the binary_path
-
-Default value: `'/usr/local/bin'`
+Default value: `'0.1.15'`
 
 ##### <a name="-openvoxview--manage_config_dir"></a>`manage_config_dir`
 
@@ -221,13 +211,17 @@ Array of predefined queries
 
 Default value: `[]`
 
-##### <a name="-openvoxview--predefined_view"></a>`predefined_view`
+##### <a name="-openvoxview--predefined_views"></a>`predefined_views`
+
+Data type: `Array[Hash]`
 
 Array of predefined views
 
+Default value: `[]`
+
 ##### <a name="-openvoxview--puppetdb_tls_ca_path"></a>`puppetdb_tls_ca_path`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 Path to the CA file
 
@@ -235,7 +229,7 @@ Default value: `undef`
 
 ##### <a name="-openvoxview--puppetdb_tls_key_path"></a>`puppetdb_tls_key_path`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 Path to the PuppetDB key file
 
@@ -243,17 +237,9 @@ Default value: `undef`
 
 ##### <a name="-openvoxview--puppetdb_tls_cert_path"></a>`puppetdb_tls_cert_path`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 Path to the PuppetDB cert file
 
 Default value: `undef`
-
-##### <a name="-openvoxview--predefined_views"></a>`predefined_views`
-
-Data type: `Array[Hash]`
-
-
-
-Default value: `[]`
 
