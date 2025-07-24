@@ -1,6 +1,6 @@
 {
   "name": "puppet-openvoxview",
-  "version": "0.1.0-rc0",
+  "version": "1.0.0",
   "author": "Vox Pupuli",
   "summary": "Puppet OpenVox module",
   "license": "AGPL-3.0",
@@ -24,31 +24,51 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": ["11", "12"]
+      "operatingsystemrelease": [
+        "11",
+        "12"
+      ]
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": ["22.04", "24.04"]
+      "operatingsystemrelease": [
+        "22.04",
+        "24.04"
+      ]
     },
     {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": ["8", "9"]
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
     },
     {
       "operatingsystem": "CentOS",
-      "operatingsystemrelease": ["9"]
+      "operatingsystemrelease": [
+        "9"
+      ]
     },
     {
       "operatingsystem": "AlmaLinux",
-      "operatingsystemrelease": ["8", "9"]
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
     },
     {
       "operatingsystem": "Rocky",
-      "operatingsystemrelease": ["8", "9"]
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
     },
     {
       "operatingsystem": "OracleLinux",
-      "operatingsystemrelease": ["8", "9"]
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
     },
     {
       "operatingsystem": "Archlinux"
@@ -58,7 +78,9 @@
     },
     {
       "operatingsystem": "Fedora",
-      "operatingsystemrelease": ["40"]
+      "operatingsystemrelease": [
+        "40"
+      ]
     }
   ],
   "requirements": [
