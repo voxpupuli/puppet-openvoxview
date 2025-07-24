@@ -4,9 +4,6 @@
 # @param version
 #   Which version should be installed
 #
-# @param install_path
-#   Installation path of the binary_path
-#
 # @param manage_config_dir
 #   Should this module manage the config dir
 #
@@ -64,7 +61,7 @@
 # @param predefined_pql_queries
 #   Array of predefined queries
 #
-# @param predefined_view
+# @param predefined_views
 #   Array of predefined views
 #
 # @param puppetdb_tls_ca_path
@@ -76,8 +73,7 @@
 # @param puppetdb_tls_cert_path
 #   Path to the PuppetDB cert file
 class openvoxview (
-  String $version = '0.1.12',
-  Stdlib::Absolutepath $install_path = '/usr/local/bin',
+  String $version = '0.1.15',
   Boolean $manage_config_dir = true,
   Stdlib::Absolutepath $config_dir = '/etc/openvox',
   String $config_file = 'openvox.yml',
@@ -98,9 +94,9 @@ class openvoxview (
   Boolean $puppetdb_tls_ignore = true,
   Array[Hash] $predefined_pql_queries = [],
   Array[Hash] $predefined_views = [],
-  String $puppetdb_tls_ca_path = undef,
-  String $puppetdb_tls_key_path = undef,
-  String $puppetdb_tls_cert_path = undef,
+  Optional[Stdlib::Absolutepath] $puppetdb_tls_ca_path = undef,
+  Optional[Stdlib::Absolutepath] $puppetdb_tls_key_path = undef,
+  Optional[Stdlib::Absolutepath] $puppetdb_tls_cert_path = undef,
 ) {
   if ($manage_group) {
     group { $openvoxview_group:
