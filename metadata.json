@@ -1,6 +1,6 @@
 {
   "name": "puppet-openvoxview",
-  "version": "1.1.0",
+  "version": "1.1.1-rc0",
   "author": "Vox Pupuli",
   "summary": "Puppet OpenVox module",
   "license": "AGPL-3.0",
