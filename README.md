@@ -41,6 +41,18 @@ class { 'openvoxview':
 
 Feel free to create issues or send PRs. never forget, be excellent to each other!
 
+
+## Installation Notes
+
+When installing, the following steps will be performed:
+
+The selected version will be downloaded to **/opt/openvoxview-$version**, a symbolic link will be created/updated at **/usr/local/bin/openvoxview**
+
+### Important
+
+Older versions located in `/opt/openvoxview-*` will **not** be removed automatically.
+If you wish to free up disk space or remove outdated versions, please delete them manually.
+
 ## Author
 
 This module is maintained by [Vox Pupuli][2]. It was originally written and
