@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.3.0](https://github.com/voxpupuli/puppet-openvoxview/tree/v1.3.0) (2025-11-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-openvoxview/compare/v1.2.0...v1.3.0)
+
+**Implemented enhancements:**
+
+- Update openvoxview version 0.1.17-\> 0.1.18 [\#14](https://github.com/voxpupuli/puppet-openvoxview/pull/14) ([sebastianrakel](https://github.com/sebastianrakel))
+
+**Merged pull requests:**
+
+- Add installation notes to README.md [\#15](https://github.com/voxpupuli/puppet-openvoxview/pull/15) ([sebastianrakel](https://github.com/sebastianrakel))
+
 ## [v1.2.0](https://github.com/voxpupuli/puppet-openvoxview/tree/v1.2.0) (2025-10-10)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-openvoxview/compare/v1.1.0...v1.2.0)
