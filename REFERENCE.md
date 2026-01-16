@@ -50,6 +50,8 @@ The following parameters are available in the `openvoxview` class:
 * [`puppetdb_tls_ca_path`](#-openvoxview--puppetdb_tls_ca_path)
 * [`puppetdb_tls_key_path`](#-openvoxview--puppetdb_tls_key_path)
 * [`puppetdb_tls_cert_path`](#-openvoxview--puppetdb_tls_cert_path)
+* [`download_url`](#-openvoxview--download_url)
+* [`install_method`](#-openvoxview--install_method)
 
 ##### <a name="-openvoxview--version"></a>`version`
 
@@ -242,4 +244,20 @@ Data type: `Optional[Stdlib::Absolutepath]`
 Path to the PuppetDB cert file
 
 Default value: `undef`
+
+##### <a name="-openvoxview--download_url"></a>`download_url`
+
+Data type: `Stdlib::HTTPUrl`
+
+URL to download the OpenVox View binary tarball from
+
+Default value: `"https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz"`
+
+##### <a name="-openvoxview--install_method"></a>`install_method`
+
+Data type: `Enum['archive', 'package']`
+
+Installation method, either 'archive' or 'package'
+
+Default value: `'archive'`
 

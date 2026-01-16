@@ -9,38 +9,53 @@ class openvoxview::install {
     default => undef,
   }
 
-  $download_source = "https://github.com/voxpupuli/openvoxview/releases/download/v${openvoxview::version}/openvoxview_${openvoxview::version}_linux_amd64.tar.gz"
-  $install_dir = "/opt/openvoxview-${openvoxview::version}"
-  $archive_bin_path = "${install_dir}/openvoxview"
+  case $openvoxview::install_method {
+    'archive': {
+      $download_source = $openvoxview::download_url
+      $install_dir = "/opt/openvoxview-${openvoxview::version}"
+      $archive_bin_path = "${install_dir}/openvoxview"
+      $executable_path = '/usr/local/bin/openvoxview'
 
-  file { $install_dir:
-    ensure => directory,
-    owner  => 'root',
-    group  => 0, # 0 instead of root because OS X uses "wheel".
-    mode   => '0755',
-  }
-  -> archive { "/tmp/openvoxview-${openvoxview::version}.tar.gz":
-    ensure          => present,
-    source          => $download_source,
-    checksum_verify => false,
-    extract         => true,
-    extract_path    => $install_dir,
-    creates         => $archive_bin_path,
-    cleanup         => true,
-    before          => File[$archive_bin_path],
-  }
+      file { $install_dir:
+        ensure => directory,
+        owner  => 'root',
+        group  => 0, # 0 instead of root because OS X uses "wheel".
+        mode   => '0755',
+      }
+      -> archive { "/tmp/openvoxview-${openvoxview::version}.tar.gz":
+        ensure          => present,
+        source          => $download_source,
+        checksum_verify => false,
+        extract         => true,
+        extract_path    => $install_dir,
+        creates         => $archive_bin_path,
+        cleanup         => true,
+        before          => File[$archive_bin_path],
+      }
 
-  file { $archive_bin_path:
-    ensure => file,
-    owner  => 'root',
-    group  => 0, # 0 instead of root because OS X uses "wheel".
-    mode   => '0555',
-  }
+      file { $archive_bin_path:
+        ensure => file,
+        owner  => 'root',
+        group  => 0, # 0 instead of root because OS X uses "wheel".
+        mode   => '0555',
+      }
 
-  file { '/usr/local/bin/openvoxview':
-    ensure  => link,
-    notify  => $notify_service_maybe,
-    target  => "${install_dir}/openvoxview",
-    require => File[$archive_bin_path],
+      file { $executable_path:
+        ensure  => link,
+        notify  => $notify_service_maybe,
+        target  => "${install_dir}/openvoxview",
+        require => File[$archive_bin_path],
+      }
+    }
+    'package': {
+      $executable_path = '/usr/bin/openvoxview'
+      package { 'openvoxview':
+        ensure => $openvoxview::version,
+        notify => $notify_service_maybe,
+      }
+    }
+    default: {
+      fail("Invalid install_method '${openvoxview::install_method}' specified. Valid options are 'archive' and 'package'.")
+    }
   }
 }
