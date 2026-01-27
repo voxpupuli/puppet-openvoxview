@@ -72,8 +72,17 @@
 #
 # @param puppetdb_tls_cert_path
 #   Path to the PuppetDB cert file
+#
+# @param download_url
+#   URL to download the OpenVox View binary tarball from
+#
+# @param install_method
+#   Installation method, either 'archive' or 'package'
+#
 class openvoxview (
+  Enum['archive', 'package'] $install_method = 'archive',
   String $version = '0.1.18',
+  Stdlib::HTTPUrl $download_url = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz",
   Boolean $manage_config_dir = true,
   Stdlib::Absolutepath $config_dir = '/etc/openvox',
   String $config_file = 'openvox.yml',
