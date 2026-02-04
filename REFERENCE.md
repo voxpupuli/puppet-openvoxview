@@ -183,7 +183,7 @@ Default value: `'localhost'`
 
 ##### <a name="-openvoxview--puppetdb_port"></a>`puppetdb_port`
 
-Data type: `Integer`
+Data type: `Integer[1024, 65535]`
 
 PuppetDB port
 
