@@ -11,10 +11,10 @@ class openvoxview::install {
 
   case $openvoxview::install_method {
     'archive': {
-      $download_source = $openvoxview::download_url
-      $install_dir = "/opt/openvoxview-${openvoxview::version}"
+      $download_source  = $openvoxview::download_url
+      $install_dir      = "/opt/openvoxview-${openvoxview::version}"
       $archive_bin_path = "${install_dir}/openvoxview"
-      $executable_path = '/usr/local/bin/openvoxview'
+      $executable_path  = '/usr/local/bin/openvoxview'
 
       file { $install_dir:
         ensure => directory,
