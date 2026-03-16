@@ -35,7 +35,7 @@ describe 'openvoxview' do
         when 'Archlinux'
           {
             install_method: 'package',
-            version: 'latest'
+            version: 'latest',
           }
         else
           {
