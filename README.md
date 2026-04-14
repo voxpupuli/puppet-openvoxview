@@ -29,7 +29,7 @@ Install specific version of OpenVox View
 
 ```puppet
 class { 'openvoxview':
-  version        => '0.1.12',
+  version => '0.1.12',
 }
 ```
 
