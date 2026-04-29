@@ -59,7 +59,7 @@ Data type: `String`
 
 Which version should be installed
 
-Default value: `'0.1.18'`
+Default value: `'1.4.0'`
 
 ##### <a name="-openvoxview--manage_config_dir"></a>`manage_config_dir`
 
