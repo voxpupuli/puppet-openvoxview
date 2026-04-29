@@ -52,6 +52,7 @@ The following parameters are available in the `openvoxview` class:
 * [`puppetdb_tls_cert_path`](#-openvoxview--puppetdb_tls_cert_path)
 * [`download_url`](#-openvoxview--download_url)
 * [`install_method`](#-openvoxview--install_method)
+* [`package_name`](#-openvoxview--package_name)
 
 ##### <a name="-openvoxview--version"></a>`version`
 
@@ -260,4 +261,12 @@ Data type: `Enum['archive', 'package']`
 Installation method, either 'archive' or 'package'
 
 Default value: `'archive'`
+
+##### <a name="-openvoxview--package_name"></a>`package_name`
+
+Data type: `String`
+
+Name of the package to install
+
+Default value: `'openvoxview'`
 

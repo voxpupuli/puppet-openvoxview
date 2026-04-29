@@ -79,8 +79,12 @@
 # @param install_method
 #   Installation method, either 'archive' or 'package'
 #
+# @param package_name
+#   Name of the package to install
+#
 class openvoxview (
   Enum['archive', 'package']     $install_method         = 'archive',
+  String                         $package_name           = 'openvoxview',
   String                         $version                = '1.4.0',
   Stdlib::HTTPUrl                $download_url           = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz",
   Boolean                        $manage_config_dir      = true,
