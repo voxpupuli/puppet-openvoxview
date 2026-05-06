@@ -81,35 +81,70 @@
 #
 # @param package_name
 #   Name of the package to install
+# @param puppetca_host
+#   Address of Puppet CA server (optional)
+#
+# @param puppetca_port
+#   Port of Puppet CA server
+#
+# @param puppetca_tls
+#   Use TLS for Puppet CA communications
+#
+# @param puppetca_tls_ignore
+#   Ignore validation of TLS certificate
+#
+# @param puppetca_tls_ca
+#   Path to CA cert file for Puppet CA
+#
+# @param puppetca_tls_key
+#   Path to client key file for Puppet CA
+#
+# @param puppetca_tls_crt
+#   Path to client cert file for Puppet CA
+#
+# @param puppetca_readonly
+#   Whether to allow signing / revoking / cleaning certs
+#
+# @param puppetca_deactivate_nodes
+#   Also deactivate node in PuppetDB with revoke / clean
 #
 class openvoxview (
-  Enum['archive', 'package']     $install_method         = 'archive',
-  String                         $package_name           = 'openvoxview',
-  String                         $version                = '1.4.0',
-  Stdlib::HTTPUrl                $download_url           = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz",
-  Boolean                        $manage_config_dir      = true,
-  Stdlib::Absolutepath           $config_dir             = '/etc/openvox',
-  String                         $config_file            = 'openvox.yml',
-  Boolean                        $manage_user            = true,
-  String                         $openvoxview_user       = 'openvoxview',
-  Boolean                        $manage_group           = true,
-  String                         $openvoxview_group      = 'openvoxview',
-  Boolean                        $manage_service         = true,
-  String                         $service_name           = 'openvoxview',
-  Boolean                        $manage_systemd_unit    = true,
-  Boolean                        $service_ensure         = true,
-  Boolean                        $service_enable         = true,
-  String                         $listen_address         = '127.0.0.1',
-  Integer[1024, 65535]           $listen_port            = 5000,
-  String                         $puppetdb_host          = 'localhost',
-  Integer[1024, 65535]           $puppetdb_port          = 8080,
-  Boolean                        $puppetdb_tls           = false,
-  Boolean                        $puppetdb_tls_ignore    = true,
-  Array[Hash]                    $predefined_pql_queries = [],
-  Array[Hash]                    $predefined_views       = [],
-  Optional[Stdlib::Absolutepath] $puppetdb_tls_ca_path   = undef,
-  Optional[Stdlib::Absolutepath] $puppetdb_tls_key_path  = undef,
-  Optional[Stdlib::Absolutepath] $puppetdb_tls_cert_path = undef,
+  Enum['archive', 'package']     $install_method            = 'archive',
+  String                         $package_name              = 'openvoxview',
+  String                         $version                   = '1.4.0',
+  Stdlib::HTTPUrl                $download_url              = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz",
+  Boolean                        $manage_config_dir         = true,
+  Stdlib::Absolutepath           $config_dir                = '/etc/openvox',
+  String                         $config_file               = 'openvox.yml',
+  Boolean                        $manage_user               = true,
+  String                         $openvoxview_user          = 'openvoxview',
+  Boolean                        $manage_group              = true,
+  String                         $openvoxview_group         = 'openvoxview',
+  Boolean                        $manage_service            = true,
+  String                         $service_name              = 'openvoxview',
+  Boolean                        $manage_systemd_unit       = true,
+  Boolean                        $service_ensure            = true,
+  Boolean                        $service_enable            = true,
+  String                         $listen_address            = '127.0.0.1',
+  Integer[1024, 65535]           $listen_port               = 5000,
+  String                         $puppetdb_host             = 'localhost',
+  Integer[1024, 65535]           $puppetdb_port             = 8080,
+  Boolean                        $puppetdb_tls              = false,
+  Boolean                        $puppetdb_tls_ignore       = true,
+  Array[Hash]                    $predefined_pql_queries    = [],
+  Array[Hash]                    $predefined_views          = [],
+  Optional[Stdlib::Absolutepath] $puppetdb_tls_ca_path      = undef,
+  Optional[Stdlib::Absolutepath] $puppetdb_tls_key_path     = undef,
+  Optional[Stdlib::Absolutepath] $puppetdb_tls_cert_path    = undef,
+  Optional[String]               $puppetca_host             = undef,
+  Integer[1024, 65535]           $puppetca_port             = 8140,
+  Boolean                        $puppetca_tls              = true,
+  Boolean                        $puppetca_tls_ignore       = false,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_ca           = undef,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_key          = undef,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_crt          = undef,
+  Boolean                        $puppetca_readonly         = true,
+  Boolean                        $puppetca_deactivate_nodes = false,
 ) {
   if ($manage_group) {
     group { $openvoxview_group:
