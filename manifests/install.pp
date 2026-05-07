@@ -51,6 +51,7 @@ class openvoxview::install {
       $executable_path = '/usr/bin/openvoxview'
       package { 'openvoxview':
         ensure => $openvoxview::version,
+        name   => $openvoxview::package_name,
         notify => $notify_service_maybe,
       }
     }
