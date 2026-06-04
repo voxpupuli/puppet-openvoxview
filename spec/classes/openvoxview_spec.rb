@@ -15,12 +15,12 @@ describe 'openvoxview' do
       it { is_expected.to contain_class('openvoxview::service') }
       it { is_expected.to contain_group('openvoxview') }
       it { is_expected.to contain_user('openvoxview').with_gid('openvoxview') }
-      it { is_expected.to contain_archive('/tmp/openvoxview-1.4.0.tar.gz') }
+      it { is_expected.to contain_archive('/tmp/openvoxview-1.5.0.tar.gz') }
       it { is_expected.to contain_file('/etc/openvox').with_ensure('directory') }
       it { is_expected.to contain_file('/etc/openvox/openvox.yml') }
-      it { is_expected.to contain_file('/opt/openvoxview-1.4.0').with_ensure('directory') }
-      it { is_expected.to contain_file('/opt/openvoxview-1.4.0/openvoxview') }
-      it { is_expected.to contain_file('/usr/local/bin/openvoxview').with_target('/opt/openvoxview-1.4.0/openvoxview') }
+      it { is_expected.to contain_file('/opt/openvoxview-1.5.0').with_ensure('directory') }
+      it { is_expected.to contain_file('/opt/openvoxview-1.5.0/openvoxview') }
+      it { is_expected.to contain_file('/usr/local/bin/openvoxview').with_target('/opt/openvoxview-1.5.0/openvoxview') }
       it { is_expected.to contain_systemd__unit_file('openvoxview.service') }
       it { is_expected.to contain_service('openvoxview') }
     end
