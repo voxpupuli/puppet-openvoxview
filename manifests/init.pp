@@ -85,7 +85,7 @@
 class openvoxview (
   Enum['archive', 'package']     $install_method         = 'archive',
   String                         $package_name           = 'openvoxview',
-  String                         $version                = '1.4.0',
+  String                         $version                = '1.5.0',
   Stdlib::HTTPUrl                $download_url           = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz",
   Boolean                        $manage_config_dir      = true,
   Stdlib::Absolutepath           $config_dir             = '/etc/openvox',

@@ -2,7 +2,7 @@
 
 require 'spec_helper_acceptance'
 
-latest_release = '1.4.0'
+latest_release = '1.5.0'
 
 describe 'class openvoxview:' do
   context 'with default settings' do
