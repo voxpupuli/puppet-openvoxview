@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.4.0](https://github.com/voxpupuli/puppet-openvoxview/tree/v1.4.0) (2026-06-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-openvoxview/compare/v1.3.0...v1.4.0)
+
+**Implemented enhancements:**
+
+- Update to OpenvoxView 1.5.0 [\#29](https://github.com/voxpupuli/puppet-openvoxview/pull/29) ([sebastianrakel](https://github.com/sebastianrakel))
+- Indent $ and = for better overview [\#21](https://github.com/voxpupuli/puppet-openvoxview/pull/21) ([crazymind1337](https://github.com/crazymind1337))
+- Add support for Debian 13 [\#20](https://github.com/voxpupuli/puppet-openvoxview/pull/20) ([tuxmea](https://github.com/tuxmea))
+- allow different and offline install methods [\#19](https://github.com/voxpupuli/puppet-openvoxview/pull/19) ([tuxmea](https://github.com/tuxmea))
+
+**Closed issues:**
+
+- Allow download from local mirror or container usage [\#18](https://github.com/voxpupuli/puppet-openvoxview/issues/18)
+
+**Merged pull requests:**
+
+- Update openvoxview version 0.1.18 -\> 1.4.0 [\#27](https://github.com/voxpupuli/puppet-openvoxview/pull/27) ([LeGmask](https://github.com/LeGmask))
+- Add the ability to customize the installed package name [\#26](https://github.com/voxpupuli/puppet-openvoxview/pull/26) ([LeGmask](https://github.com/LeGmask))
+- README: fix puppet code whitespace [\#25](https://github.com/voxpupuli/puppet-openvoxview/pull/25) ([kenyon](https://github.com/kenyon))
+
 ## [v1.3.0](https://github.com/voxpupuli/puppet-openvoxview/tree/v1.3.0) (2025-11-04)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-openvoxview/compare/v1.2.0...v1.3.0)
