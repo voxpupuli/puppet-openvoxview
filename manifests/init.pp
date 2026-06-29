@@ -82,6 +82,12 @@
 # @param package_name
 #   Name of the package to install
 #
+# @param log_level
+#   Log level
+#
+# @param log_format
+#   Log format
+#
 class openvoxview (
   Enum['archive', 'package']     $install_method         = 'archive',
   String                         $package_name           = 'openvoxview',
@@ -110,6 +116,8 @@ class openvoxview (
   Optional[Stdlib::Absolutepath] $puppetdb_tls_ca_path   = undef,
   Optional[Stdlib::Absolutepath] $puppetdb_tls_key_path  = undef,
   Optional[Stdlib::Absolutepath] $puppetdb_tls_cert_path = undef,
+  Optional[Enum['debug','info','warn','error']] $log_level = undef,
+  Optional[Enum['text','json']] $log_format = undef,
 ) {
   if ($manage_group) {
     group { $openvoxview_group:

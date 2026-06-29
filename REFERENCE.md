@@ -53,6 +53,8 @@ The following parameters are available in the `openvoxview` class:
 * [`download_url`](#-openvoxview--download_url)
 * [`install_method`](#-openvoxview--install_method)
 * [`package_name`](#-openvoxview--package_name)
+* [`log_level`](#-openvoxview--log_level)
+* [`log_format`](#-openvoxview--log_format)
 
 ##### <a name="-openvoxview--version"></a>`version`
 
@@ -269,4 +271,20 @@ Data type: `String`
 Name of the package to install
 
 Default value: `'openvoxview'`
+
+##### <a name="-openvoxview--log_level"></a>`log_level`
+
+Data type: `Optional[Enum['debug','info','warn','error']]`
+
+Log level
+
+Default value: `undef`
+
+##### <a name="-openvoxview--log_format"></a>`log_format`
+
+Data type: `Optional[Enum['text','json']]`
+
+Log format
+
+Default value: `undef`
 
