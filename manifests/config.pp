@@ -18,8 +18,10 @@ class openvoxview::config {
       tls_key    => $openvoxview::puppetdb_tls_key_path,
       tls_cert   => $openvoxview::puppetdb_tls_cert_path,
     },
-    views    => $openvoxview::predefined_views,
-    queries  => $openvoxview::predefined_pql_queries,
+    views      => $openvoxview::predefined_views,
+    queries    => $openvoxview::predefined_pql_queries,
+    log_level  => $openvoxview::log_level,
+    log_format => $openvoxview::log_format,
   }
 
   if $openvoxview::manage_config_dir {
