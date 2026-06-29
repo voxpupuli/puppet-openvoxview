@@ -22,7 +22,7 @@ class openvoxview::config {
     queries    => $openvoxview::predefined_pql_queries,
     log_level  => $openvoxview::log_level,
     log_format => $openvoxview::log_format,
-  }
+  }.filter |$_, $v| { $v =~ NotUndef }
 
   if $openvoxview::manage_config_dir {
     file { $openvoxview::config_dir:
