@@ -93,13 +93,13 @@
 # @param puppetca_tls_ignore
 #   Ignore validation of TLS certificate
 #
-# @param puppetca_tls_ca
+# @param puppetca_tls_ca_path
 #   Path to CA cert file for Puppet CA
 #
-# @param puppetca_tls_key
+# @param puppetca_tls_key_path
 #   Path to client key file for Puppet CA
 #
-# @param puppetca_tls_crt
+# @param puppetca_tls_cert_path
 #   Path to client cert file for Puppet CA
 #
 # @param puppetca_readonly
@@ -148,9 +148,9 @@ class openvoxview (
   Integer[1024, 65535] $puppetca_port = 8140,
   Boolean $puppetca_tls = true,
   Boolean $puppetca_tls_ignore = false,
-  Optional[Stdlib::Absolutepath] $puppetca_tls_ca = undef,
-  Optional[Stdlib::Absolutepath] $puppetca_tls_key = undef,
-  Optional[Stdlib::Absolutepath] $puppetca_tls_crt = undef,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_ca_path = undef,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_key_path = undef,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_cert_path = undef,
   Boolean $puppetca_readonly = true,
   Boolean $puppetca_deactivate_nodes = false,
 ) {
