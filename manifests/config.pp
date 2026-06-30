@@ -22,6 +22,17 @@ class openvoxview::config {
     queries    => $openvoxview::predefined_pql_queries,
     log_level  => $openvoxview::log_level,
     log_format => $openvoxview::log_format,
+    puppetca   => {
+      host             => $openvoxview::puppetca_host,
+      port             => $openvoxview::puppetca_port,
+      tls              => $openvoxview::puppetca_tls,
+      tls_ignore       => $openvoxview::puppetca_tls_ignore,
+      tls_ca           => $openvoxview::puppetca_tls_ca,
+      tls_key          => $openvoxview::puppetca_tls_key,
+      tls_crt          => $openvoxview::puppetca_tls_crt,
+      readonly         => $openvoxview::puppetca_readonly,
+      deactivate_nodes => $openvoxview::puppetca_deactivate_nodes,
+    },
   }
 
   if $openvoxview::manage_config_dir {

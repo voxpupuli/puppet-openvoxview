@@ -81,6 +81,32 @@
 #
 # @param package_name
 #   Name of the package to install
+# @param puppetca_host
+#   Address of Puppet CA server (optional)
+#
+# @param puppetca_port
+#   Port of Puppet CA server
+#
+# @param puppetca_tls
+#   Use TLS for Puppet CA communications
+#
+# @param puppetca_tls_ignore
+#   Ignore validation of TLS certificate
+#
+# @param puppetca_tls_ca
+#   Path to CA cert file for Puppet CA
+#
+# @param puppetca_tls_key
+#   Path to client key file for Puppet CA
+#
+# @param puppetca_tls_crt
+#   Path to client cert file for Puppet CA
+#
+# @param puppetca_readonly
+#   Whether to allow signing / revoking / cleaning certs
+#
+# @param puppetca_deactivate_nodes
+#   Also deactivate node in PuppetDB with revoke / clean
 #
 # @param log_level
 #   Log level
@@ -118,6 +144,15 @@ class openvoxview (
   Optional[Stdlib::Absolutepath] $puppetdb_tls_cert_path = undef,
   Optional[Enum['debug','info','warn','error']] $log_level = undef,
   Optional[Enum['text','json']] $log_format = undef,
+  Optional[String] $puppetca_host = undef,
+  Integer[1024, 65535] $puppetca_port = 8140,
+  Boolean $puppetca_tls = true,
+  Boolean $puppetca_tls_ignore = false,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_ca = undef,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_key = undef,
+  Optional[Stdlib::Absolutepath] $puppetca_tls_crt = undef,
+  Boolean $puppetca_readonly = true,
+  Boolean $puppetca_deactivate_nodes = false,
 ) {
   if ($manage_group) {
     group { $openvoxview_group:
