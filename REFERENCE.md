@@ -57,9 +57,9 @@ The following parameters are available in the `openvoxview` class:
 * [`puppetca_port`](#-openvoxview--puppetca_port)
 * [`puppetca_tls`](#-openvoxview--puppetca_tls)
 * [`puppetca_tls_ignore`](#-openvoxview--puppetca_tls_ignore)
-* [`puppetca_tls_ca`](#-openvoxview--puppetca_tls_ca)
-* [`puppetca_tls_key`](#-openvoxview--puppetca_tls_key)
-* [`puppetca_tls_crt`](#-openvoxview--puppetca_tls_crt)
+* [`puppetca_tls_ca_path`](#-openvoxview--puppetca_tls_ca_path)
+* [`puppetca_tls_key_path`](#-openvoxview--puppetca_tls_key_path)
+* [`puppetca_tls_cert_path`](#-openvoxview--puppetca_tls_cert_path)
 * [`puppetca_readonly`](#-openvoxview--puppetca_readonly)
 * [`puppetca_deactivate_nodes`](#-openvoxview--puppetca_deactivate_nodes)
 * [`log_level`](#-openvoxview--log_level)
@@ -313,7 +313,7 @@ Ignore validation of TLS certificate
 
 Default value: `false`
 
-##### <a name="-openvoxview--puppetca_tls_ca"></a>`puppetca_tls_ca`
+##### <a name="-openvoxview--puppetca_tls_ca_path"></a>`puppetca_tls_ca_path`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
@@ -321,7 +321,7 @@ Path to CA cert file for Puppet CA
 
 Default value: `undef`
 
-##### <a name="-openvoxview--puppetca_tls_key"></a>`puppetca_tls_key`
+##### <a name="-openvoxview--puppetca_tls_key_path"></a>`puppetca_tls_key_path`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
@@ -329,7 +329,7 @@ Path to client key file for Puppet CA
 
 Default value: `undef`
 
-##### <a name="-openvoxview--puppetca_tls_crt"></a>`puppetca_tls_crt`
+##### <a name="-openvoxview--puppetca_tls_cert_path"></a>`puppetca_tls_cert_path`
 
 Data type: `Optional[Stdlib::Absolutepath]`
 
