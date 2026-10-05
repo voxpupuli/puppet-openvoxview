@@ -95,7 +95,7 @@ Data type: `String`
 
 Config File name
 
-Default value: `'openvox.yml'`
+Default value: `'openvoxview.yml'`
 
 ##### <a name="-openvoxview--manage_user"></a>`manage_user`
 
