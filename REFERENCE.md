@@ -368,4 +368,3 @@ Data type: `Optional[Enum['text','json']]`
 Log format
 
 Default value: `undef`
-
