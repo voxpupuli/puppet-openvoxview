@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.5.0](https://github.com/voxpupuli/puppet-openvoxview/tree/v1.5.0) (2026-10-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-openvoxview/compare/v1.4.0...v1.5.0)
+
+**Implemented enhancements:**
+
+- puppet/systemd: Allow 11.x [\#41](https://github.com/voxpupuli/puppet-openvoxview/pull/41) ([bastelfreak](https://github.com/bastelfreak))
+- Update requirements to allow OpenVox 9 [\#38](https://github.com/voxpupuli/puppet-openvoxview/pull/38) ([sebastianrakel](https://github.com/sebastianrakel))
+- Improve unit tests [\#36](https://github.com/voxpupuli/puppet-openvoxview/pull/36) ([jay7x](https://github.com/jay7x))
+- Add log options support [\#32](https://github.com/voxpupuli/puppet-openvoxview/pull/32) ([jay7x](https://github.com/jay7x))
+- puppet/systemd: Allow 9.x [\#31](https://github.com/voxpupuli/puppet-openvoxview/pull/31) ([LeGmask](https://github.com/LeGmask))
+- Support for puppetca configuration [\#28](https://github.com/voxpupuli/puppet-openvoxview/pull/28) ([LeGmask](https://github.com/LeGmask))
+
+**Fixed bugs:**
+
+- Correct puppetca tls option names [\#34](https://github.com/voxpupuli/puppet-openvoxview/pull/34) ([jay7x](https://github.com/jay7x))
+
 ## [v1.4.0](https://github.com/voxpupuli/puppet-openvoxview/tree/v1.4.0) (2026-06-04)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-openvoxview/compare/v1.3.0...v1.4.0)
