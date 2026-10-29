@@ -40,7 +40,7 @@ describe 'openvoxview' do
           is_expected.to contain_systemd__unit_file('openvoxview.service')
             .with_content(%r{^User=openvoxview})
             .with_content(%r{^Group=openvoxview})
-            .with_content(%r{^ExecStart=/usr/local/bin/openvoxview -config /etc/openvox/openvox.yml$})
+            .with_content(%r{^ExecStart=/usr/local/bin/openvoxview -config /etc/openvox/openvoxview.yml$})
             .that_notifies('Service[openvoxview]')
         end
 
@@ -54,7 +54,7 @@ describe 'openvoxview' do
         end
 
         it do
-          is_expected.to contain_file('/etc/openvox/openvox.yml')
+          is_expected.to contain_file('/etc/openvox/openvoxview.yml')
             .with_owner('openvoxview')
             .with_group('openvoxview')
             .that_notifies('Service[openvoxview]')
@@ -73,7 +73,7 @@ describe 'openvoxview' do
 
         it do
           is_expected.to contain_systemd__unit_file('openvoxview.service')
-            .with_content(%r{^ExecStart=/usr/bin/openvoxview -config /etc/openvox/openvox.yml$})
+            .with_content(%r{^ExecStart=/usr/bin/openvoxview -config /etc/openvox/openvoxview.yml$})
         end
 
         context 'with package_name specified' do
@@ -128,11 +128,11 @@ describe 'openvoxview' do
 
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_file('/opt/openvoxview/etc').with_ensure('directory') }
-        it { is_expected.to contain_file('/opt/openvoxview/etc/openvox.yml').with_ensure('file') }
+        it { is_expected.to contain_file('/opt/openvoxview/etc/openvoxview.yml').with_ensure('file') }
 
         it do
           is_expected.to contain_systemd__unit_file('openvoxview.service')
-            .with_content(%r{^ExecStart=/usr/local/bin/openvoxview -config /opt/openvoxview/etc/openvox.yml$})
+            .with_content(%r{^ExecStart=/usr/local/bin/openvoxview -config /opt/openvoxview/etc/openvoxview.yml$})
         end
       end
 
@@ -162,7 +162,7 @@ describe 'openvoxview' do
         it { is_expected.to contain_user('test').with_gid('openvoxview') }
         it { is_expected.to contain_systemd__unit_file('openvoxview.service').with_content(%r{^User=test}) }
         it { is_expected.to contain_file('/etc/openvox').with_owner('test') }
-        it { is_expected.to contain_file('/etc/openvox/openvox.yml').with_owner('test') }
+        it { is_expected.to contain_file('/etc/openvox/openvoxview.yml').with_owner('test') }
       end
 
       context 'with manage_group => false' do
@@ -180,7 +180,7 @@ describe 'openvoxview' do
         it { is_expected.to contain_user('openvoxview').with_gid('test') }
         it { is_expected.to contain_systemd__unit_file('openvoxview.service').with_content(%r{^Group=test}) }
         it { is_expected.to contain_file('/etc/openvox').with_group('test') }
-        it { is_expected.to contain_file('/etc/openvox/openvox.yml').with_group('test') }
+        it { is_expected.to contain_file('/etc/openvox/openvoxview.yml').with_group('test') }
       end
 
       context 'with manage_service => false' do
@@ -190,7 +190,7 @@ describe 'openvoxview' do
         it { is_expected.to contain_file('/usr/local/bin/openvoxview').that_notifies([]) }
         it { is_expected.to contain_systemd__unit_file('openvoxview.service').that_notifies([]) }
         it { is_expected.not_to contain_service('openvoxview') }
-        it { is_expected.to contain_file('/etc/openvox/openvox.yml').that_notifies([]) }
+        it { is_expected.to contain_file('/etc/openvox/openvoxview.yml').that_notifies([]) }
       end
 
       context 'with service_name specified' do
@@ -224,7 +224,7 @@ describe 'openvoxview' do
 
       describe 'configuration file' do
         let(:config_data) do
-          x = catalogue.resource('file', '/etc/openvox/openvox.yml').send(:parameters)
+          x = catalogue.resource('file', '/etc/openvox/openvoxview.yml').send(:parameters)
           YAML.safe_load(x[:content])
         end
 
@@ -260,7 +260,7 @@ describe 'openvoxview' do
             }
           end
 
-          it { is_expected.to contain_file('/etc/openvox/openvox.yml').with_content(YAML.dump(default_config)) }
+          it { is_expected.to contain_file('/etc/openvox/openvoxview.yml').with_content(YAML.dump(default_config)) }
         end
 
         checks = {

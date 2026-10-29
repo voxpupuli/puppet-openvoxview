@@ -121,7 +121,7 @@ class openvoxview (
   Stdlib::HTTPUrl                $download_url           = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz",
   Boolean                        $manage_config_dir      = true,
   Stdlib::Absolutepath           $config_dir             = '/etc/openvox',
-  String                         $config_file            = 'openvox.yml',
+  String                         $config_file            = 'openvoxview.yml',
   Boolean                        $manage_user            = true,
   String                         $openvoxview_user       = 'openvoxview',
   Boolean                        $manage_group           = true,
