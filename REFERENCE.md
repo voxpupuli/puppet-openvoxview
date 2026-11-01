@@ -16,6 +16,10 @@
 * `openvoxview::install`: This class handles the OpenVox View installation.
 * `openvoxview::service`: This class handles the OpenVox View Service.
 
+### Functions
+
+* [`openvoxview::github_download_url`](#openvoxview--github_download_url): Return a GitHub release artifact URL for specified version
+
 ## Classes
 
 ### <a name="openvoxview"></a>`openvoxview`
@@ -51,6 +55,7 @@ The following parameters are available in the `openvoxview` class:
 * [`puppetdb_tls_key_path`](#-openvoxview--puppetdb_tls_key_path)
 * [`puppetdb_tls_cert_path`](#-openvoxview--puppetdb_tls_cert_path)
 * [`download_url`](#-openvoxview--download_url)
+* [`checksum`](#-openvoxview--checksum)
 * [`install_method`](#-openvoxview--install_method)
 * [`package_name`](#-openvoxview--package_name)
 * [`puppetca_host`](#-openvoxview--puppetca_host)
@@ -263,7 +268,15 @@ Data type: `Stdlib::HTTPUrl`
 
 URL to download the OpenVox View binary tarball from
 
-Default value: `"https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz"`
+Default value: `openvoxview::github_download_url($version, 'archive', '.tar.gz')`
+
+##### <a name="-openvoxview--checksum"></a>`checksum`
+
+Data type: `Variant[String[1], Boolean[false]]`
+
+Either a checksum value or a checksum URL to verify the downloaded archive. Set to Boolean false to disable.
+
+Default value: `openvoxview::github_download_url($version, 'checksum')`
 
 ##### <a name="-openvoxview--install_method"></a>`install_method`
 
@@ -368,3 +381,36 @@ Data type: `Optional[Enum['text','json']]`
 Log format
 
 Default value: `undef`
+
+## Functions
+
+### <a name="openvoxview--github_download_url"></a>`openvoxview::github_download_url`
+
+Type: Puppet Language
+
+Return a GitHub release artifact URL for specified version
+
+#### `openvoxview::github_download_url(String[1] $version, Enum['archive', 'checksum'] $download_type, Optional[String[1]] $extension = undef)`
+
+The openvoxview::github_download_url function.
+
+Returns: `String` String
+Returns GitHub artifact download URL
+
+##### `version`
+
+Data type: `String[1]`
+
+Release version.
+
+##### `download_type`
+
+Data type: `Enum['archive', 'checksum']`
+
+Whether to make archive or checksum download URL.
+
+##### `extension`
+
+Data type: `Optional[String[1]]`
+
+Archive extension (when download_type is 'archive').

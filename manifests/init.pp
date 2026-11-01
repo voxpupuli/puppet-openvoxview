@@ -76,6 +76,9 @@
 # @param download_url
 #   URL to download the OpenVox View binary tarball from
 #
+# @param checksum
+#   Either a checksum value or a checksum URL to verify the downloaded archive. Set to Boolean false to disable.
+#
 # @param install_method
 #   Installation method, either 'archive' or 'package'
 #
@@ -118,7 +121,8 @@ class openvoxview (
   Enum['archive', 'package']     $install_method         = 'archive',
   String                         $package_name           = 'openvoxview',
   String                         $version                = '1.5.0',
-  Stdlib::HTTPUrl                $download_url           = "https://github.com/voxpupuli/openvoxview/releases/download/v${version}/openvoxview_${version}_linux_amd64.tar.gz",
+  Stdlib::HTTPUrl                $download_url           = openvoxview::github_download_url($version, 'archive', '.tar.gz'),
+  Variant[String[1], Boolean[false]] $checksum           = openvoxview::github_download_url($version, 'checksum'),
   Boolean                        $manage_config_dir      = true,
   Stdlib::Absolutepath           $config_dir             = '/etc/openvox',
   String                         $config_file            = 'openvox.yml',

@@ -21,6 +21,9 @@ describe 'openvoxview' do
         it do
           is_expected.to contain_archive("/tmp/openvoxview-#{OPENVOXVIEW_VERSION}.tar.gz")
             .with_source("https://github.com/voxpupuli/openvoxview/releases/download/v#{OPENVOXVIEW_VERSION}/openvoxview_#{OPENVOXVIEW_VERSION}_linux_amd64.tar.gz")
+            .with_checksum_url("https://github.com/voxpupuli/openvoxview/releases/download/v#{OPENVOXVIEW_VERSION}/checksums.txt")
+            .without_checksum
+            .with_checksum_verify(true)
             .with_extract_path("/opt/openvoxview-#{OPENVOXVIEW_VERSION}")
             .with_creates("/opt/openvoxview-#{OPENVOXVIEW_VERSION}/openvoxview")
         end
@@ -114,6 +117,29 @@ describe 'openvoxview' do
 
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_archive("/tmp/openvoxview-#{OPENVOXVIEW_VERSION}.tar.gz").with_source('https://example.com/foo/bar.tgz') }
+      end
+
+      context 'with checksum specified' do
+        context 'with checksum set to checksum' do
+          let(:params) { { checksum: 'deadbeef' } }
+
+          it { is_expected.to compile.with_all_deps }
+          it { is_expected.to contain_archive("/tmp/openvoxview-#{OPENVOXVIEW_VERSION}.tar.gz").without_checksum_url.with_checksum('deadbeef').with_checksum_verify(true) }
+        end
+
+        context 'with checksum set to URL' do
+          let(:params) { { checksum: 'https://example.com/foo/bar.txt' } }
+
+          it { is_expected.to compile.with_all_deps }
+          it { is_expected.to contain_archive("/tmp/openvoxview-#{OPENVOXVIEW_VERSION}.tar.gz").with_checksum_url('https://example.com/foo/bar.txt').without_checksum.with_checksum_verify(true) }
+        end
+
+        context 'with checksum set to false' do
+          let(:params) { { checksum: false } }
+
+          it { is_expected.to compile.with_all_deps }
+          it { is_expected.to contain_archive("/tmp/openvoxview-#{OPENVOXVIEW_VERSION}.tar.gz").without_checksum_url.without_checksum.with_checksum_verify(false) }
+        end
       end
 
       context 'with manage_config_dir => false' do
