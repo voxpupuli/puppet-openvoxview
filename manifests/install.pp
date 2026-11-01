@@ -11,7 +11,16 @@ class openvoxview::install {
 
   case $openvoxview::install_method {
     'archive': {
-      $download_source  = $openvoxview::download_url
+      [$checksum_url, $checksum] = if $openvoxview::checksum {
+        # Try to parse as URI to check if that's an URI or just a String value
+        URI($openvoxview::checksum) ? {
+          URI[{ 'host' => NotUndef }] => [$openvoxview::checksum, undef], # checksum URI
+          default                     => [undef, $openvoxview::checksum], # checksum value
+        }
+      } else {
+        [undef, undef]
+      }
+
       $install_dir      = "/opt/openvoxview-${openvoxview::version}"
       $archive_bin_path = "${install_dir}/openvoxview"
       $executable_path  = '/usr/local/bin/openvoxview'
@@ -24,8 +33,10 @@ class openvoxview::install {
       }
       -> archive { "/tmp/openvoxview-${openvoxview::version}.tar.gz":
         ensure          => present,
-        source          => $download_source,
-        checksum_verify => false,
+        source          => $openvoxview::download_url,
+        checksum        => $checksum,
+        checksum_url    => $checksum_url,
+        checksum_verify => $openvoxview::checksum != false,
         extract         => true,
         extract_path    => $install_dir,
         creates         => $archive_bin_path,
